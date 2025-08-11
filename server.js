@@ -119,15 +119,15 @@ app.post("/analyze-portfolio", apiKeyMiddleware, async (req, res) => {
     const prices = includePrices ? await fetchPricesForSymbols(symbols) : {};
 
     const prompt = `You are a senior financial analyst. Analyze the following portfolio.
-Portfolio positions: ${JSON.stringify(portfolio)}
-Latest prices (may be null if unavailable): ${JSON.stringify(prices)}
-Provide:
-- Overall diversification and concentration risks
-- Sector or factor exposures if inferable
-- Notable strengths and weaknesses
-- Risk management suggestions and rebalancing ideas
-- Short, actionable next steps
-Keep it concise and practical for a retail investor.`;
+    Portfolio positions: ${JSON.stringify(portfolio)}
+    Latest prices (may be null if unavailable): ${JSON.stringify(prices)}
+    Provide:
+    - Overall diversification and concentration risks
+    - Sector or factor exposures if inferable
+    - Notable strengths and weaknesses
+    - Risk management suggestions and rebalancing ideas
+    - Short, actionable next steps
+    Keep it concise and practical for a retail investor.`;
 
     // OpenAI chat
     const completion = await openai.chat.completions.create({
